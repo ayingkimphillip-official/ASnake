@@ -1,1 +1,1 @@
-# ASnake
+A game of snake.
