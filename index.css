@@ -1,0 +1,12 @@
+body {
+    background-color: grey;
+}
+
+#gameBoard {
+    width: 600px;
+    height: 600px;
+    border: 1px solid white;
+    position: relative;
+    margin-left: calc(50% - 600px / 2);
+    margin-top: calc(50vh - 600px / 2);
+}
