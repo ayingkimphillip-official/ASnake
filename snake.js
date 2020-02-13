@@ -6,6 +6,8 @@ class Snake {
     directionY = 0;
     color;
     gameBoard = null;
+    snake;
+    hasSnakeBeenAdded = false;
 
     constructor(x, y, snakeWidth, snakeHeight, color) {
         this.x = x;
@@ -13,17 +15,21 @@ class Snake {
         this.color = color;
         this.snakeLength[0] = snakeWidth;
         this.snakeLength[1] = snakeHeight;
-        
     }
 
     constructSnake = () => {
         this.gameBoard = document.querySelector("#gameBoard");
-        let snake = this.gameBoard.getContext("2d");
-        snake.fillStyle = this.color;
-        snake.fillRect(this.x, this.y, this.snakeLength[0], this.snakeLength[1]);
+        this.snake = this.gameBoard.getContext("2d");
+        this.snake.fillStyle = this.color;
+        this.snake.fillRect(this.x, this.y, this.snakeLength[0], this.snakeLength[1]);
+        if (this.hasSnakeBeenAdded == true) {
+            this.makeSnakeGrow();
+            this.hasSnakeBeenAdded = false;
+        }
+    };
+
+    makeSnakeGrow = () => {
+        this.hasSnakeBeenAdded = true;
+        this.snake.fillRect(this.x + this.snakeLength[0], this.y, this.snakeLength[0], this.snakeLength[1]);
     };
 }
-
-
-//Diri e butang ang pag move sa snake sa iyang current direction.
-//Example kung nag atubang ang snake to the right, kai mu padayon ra siya ug abante pa right.
